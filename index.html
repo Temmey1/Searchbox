@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Box</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section>
+           
+      <form autocomplete="off" action="">
+        <div class="inputsearch">
+            <input type="text" id="filterValue" placeholder="Search input">
+            <ul>
+                
+            </ul>
+        </div>
+    </form>
+       
+
+    </section>
+
+    <script>
+      
+        const arr = ['JAMES','JOHN','SHAKR','JACK', 'PHLIP','JHDSHASHJ','JBJSAJWSK','HGFF', 'GFGDTGSDRGS', 'FSRFS'];
+        let input = document.querySelector('#filterValue');
+    
+        console.log(arr)
+
+        input.addEventListener('input', (e) => {
+           var newData = [];
+            if (e.target.value){
+                newData = arr.filter(doc => doc.toLowerCase().includes(e.target.value.toLowerCase()));
+                newData = newData.map(doc => `<li>${doc}</li>`);
+            }
+            show(newData);
+           
+        });
+
+        function show(newData) {
+                const html = !newData.length? '': newData.join('');
+                document.querySelector('ul').innerHTML = html
+            }
+
+
+
+    </script>
+</body>
+</html>
